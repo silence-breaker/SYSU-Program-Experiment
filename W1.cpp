@@ -35,6 +35,7 @@ int main(void)
     cout << "So the total length of the rectangle is ";
     cout << totalLength;
     cout << "\n";
+    cout << "So the total length of the rectangle is " << totalLength << "\n";
 
     return 0;
 }
