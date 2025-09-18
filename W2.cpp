@@ -113,10 +113,11 @@ int main(void)
 
 int main(void)
 {
+    
     double radius, vm; // 圆的半径和体积
     cout << "请输入球体半径：" << endl;
     cin >> radius; //输入半径
-    vm = (4.0/3.0) * 3.1415 * radius * radius * radius; //计算球体体积
+    vm = (4.0/3.0) * M_PI* radius * radius * radius; //计算球体体积
     cout << "球体的体积为：" << vm << endl;
     return 0;
 }
