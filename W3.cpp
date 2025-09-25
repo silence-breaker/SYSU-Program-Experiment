@@ -482,3 +482,88 @@ int main(void)
 */
 
 //问题八
+/*
+double calculate_money(double principal, double rate, int years)
+{
+    int i = 0;
+    int j = 0;
+    // 修正：每月本金还款额应该根据输入的年限计算
+    double monthly_principal = principal / (years * 12.0);
+    double rest_money = principal;
+    double total_interest = 0;
+    
+    for(i = 0; i < years; i++)
+    {   
+        double yearly_interest = 0; // 当年的利息
+        
+        for(j = 0; j < 12; j++)
+        {
+            if(rest_money <= 0)
+                break;
+                
+            // 当月利息 = 剩余本金 * 月利率
+            double monthly_interest = rest_money * rate / 12.0;
+            yearly_interest += monthly_interest;
+            total_interest += monthly_interest;
+            
+            // 更新剩余本金：减去每月固定的本金还款额
+            rest_money -= monthly_principal;
+            
+            // 防止剩余本金为负数
+            if(rest_money < 0)
+                rest_money = 0;
+        }
+        
+        if(rest_money <= 0)
+            break;
+            
+        // 计算当年利息占原始贷款额的百分比
+        double percentage = (yearly_interest / principal) * 100;
+        cout << "第" << i+1 << "年的利息金额占原始贷款额的百分比为" << percentage << "%" << endl;
+    }
+    
+    cout << "总利息为:\n" << total_interest << endl;
+    return total_interest;
+}
+
+int main(void)
+{
+    double principal, rate;
+    int years;
+    cout << "请输入贷款本金:\n";
+    cin >> principal;
+    cout << "请输入年利率(如5表示5%):\n";
+    cin >> rate;
+    rate = rate/100.0;
+    cout << "请输入贷款年限:\n";
+    cin >> years;
+    double interest = calculate_money(principal,rate,years);
+    cout << "总还款金额为:\n" << principal + interest << endl;
+
+    return 0;
+}
+*/
+
+int main(void)
+{
+    int temp = 0;
+    cout << "请输入希望的温度0-999" << endl;
+    cin >> temp;
+    int hundred = temp / 100;
+    int ten = (temp - hundred * 100) / 10;
+    int one = temp % 10;
+    if(hundred==1||hundred==4||hundred==7)
+    {
+        temp = temp - 100;
+    }
+    if(ten==1||ten==4||ten==7)
+    {
+        temp = temp - 10;
+    }
+    if(one==1||one==4||one==7)
+    {
+        temp = temp - 1;
+    }
+    cout << "实际温度为" << temp << endl;
+    return 0;
+}
