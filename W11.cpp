@@ -130,11 +130,12 @@ Node* createList()
 //最后填的节点是head
 void print(Node* head)
 {
+    Node* p = head;
     cout << "下面打印你输入的链表" <<endl;
-    while(head)
+    while(p)
     {
-        cout << head->data <<endl;
-        head = head->next;
+        cout << p->data <<endl;
+        p = p->next;
     }
 }
 
@@ -172,7 +173,35 @@ Node* insert(Node* head,int data,int n)
 
 Node* delete_from_last(int n, Node* head)
 {
+    Node* p = head;
+    int m = 0;
+    while(p)
+    {
+        p = p->next;
+        m++;
+    }
+    cout << "总共有" << m <<"个节点"<<endl;
+    p = head;
+    int i = 1;
+    if(n==1)
+    {
+        while(p->next->next)
+        {
+            p = p->next;
+        
+        }
+        p->next = nullptr;
+    }
+    if(n>1)
+    {
+        for(i=1;i<(m-n);i++)
+        {
+            p = p->next;
+        }
+        p->next = p->next->next;
+    }
     
+    return head;
 }
 
 int main(void)
@@ -181,11 +210,15 @@ int main(void)
     head = createList();
     print(head);
     int n = 0;
-    cout << "插入节点到第n个节点处"<<endl;
+    // cout << "插入节点到第n个节点处（请输入n）"<<endl;
+    // cin >> n;
+    // int data = 0;
+    // cout << "插入数值为" <<endl;
+    // cin >> data;
+    // insert(head,data,n);
+    // print(head);
+    cout << "删除倒数第n个节点（请输入n）"<<endl;
     cin >> n;
-    int data = 0;
-    cout << "插入数值为" <<endl;
-    cin >> data;
-    insert(head,data,n);
+    delete_from_last(n,head);
     print(head);
 }
